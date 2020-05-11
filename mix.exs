@@ -1,8 +1,8 @@
-defmodule NervesSystemRpi4.MixProject do
+defmodule LY11SystemRpi4.MixProject do
   use Mix.Project
 
-  @github_organization "nerves-project"
-  @app :nerves_system_rpi4
+  @github_organization "bcdevices"
+  @app :ly11_system_rpi4
   @version Path.join(__DIR__, "VERSION")
            |> File.read!()
            |> String.trim()
@@ -36,7 +36,8 @@ defmodule NervesSystemRpi4.MixProject do
     [
       type: :system,
       artifact_sites: [
-        {:github_releases, "#{@github_organization}/#{@app}"}
+        {:github_releases, "#{@github_organization}/#{@app}"},
+        {:prefix, "https://ly-archive.iotcloud.io/"}
       ],
       build_runner_opts: build_runner_opts(),
       platform: Nerves.System.BR,
@@ -109,7 +110,7 @@ defmodule NervesSystemRpi4.MixProject do
     if function_exported?(Mix, :target, 1) do
       apply(Mix, :target, [:target])
     else
-      System.put_env("MIX_TARGET", "target")
+      System.put_env("MIX_TARGET", "ly11_rpi4")
     end
   end
 end
