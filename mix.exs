@@ -60,12 +60,13 @@ defmodule LY11SystemRpi4.MixProject do
 
   defp description do
     """
-    Nerves System - Raspberry Pi 4
+    LY11 Nerves System - Raspberry Pi 4
     """
   end
 
   defp package do
     [
+      maintainers: ["Blue Clover Devices"],
       files: package_files(),
       licenses: ["Apache 2.0"],
       links: %{"GitHub" => "https://github.com/#{@github_organization}/#{@app}"}
@@ -74,6 +75,8 @@ defmodule LY11SystemRpi4.MixProject do
 
   defp package_files do
     [
+      "package",
+      "external.mk",
       "fwup_include",
       "rootfs_overlay",
       "CHANGELOG.md",
@@ -84,10 +87,13 @@ defmodule LY11SystemRpi4.MixProject do
       "LICENSE",
       "linux-4.19.defconfig",
       "mix.exs",
+      "patches",
+      "busybox_defconfig",
       "nerves_defconfig",
       "post-build.sh",
       "post-createfs.sh",
       "ramoops.dts",
+      "users_table.txt",
       "README.md",
       "VERSION"
     ]
