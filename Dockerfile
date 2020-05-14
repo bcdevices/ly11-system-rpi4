@@ -89,7 +89,7 @@ RUN set -xe \
   fakeroot \
 	&& rm -rf /var/lib/apt/lists/*
 
-ENV ERLANG_OTP_VERSION=22.0-1
+ENV ERLANG_OTP_VERSION=22.3.3-1
 ENV ERLANG_PKG="esl-erlang_${ERLANG_OTP_VERSION}~debian~stretch_amd64.deb"
 ENV ERLANG_URL="https://packages.erlang-solutions.com/erlang/debian/pool/${ERLANG_PKG}"
 ENV ELIXIR_VERSION=1.10.3-otp-22
