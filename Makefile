@@ -65,7 +65,7 @@ dist: dist-prep build
 
 .PHONY: build-test-app
 build-test-app:
-	cd ./plt_test_app && MIX_TARGET=$(MIX_TARGET) mix firmware
+	cd ./plt_test_app && MIX_TARGET=$(MIX_TARGET) mix do deps.get, firmware
 
 .PHONY: dist-test-app
 dist-test-app: build-test-app
