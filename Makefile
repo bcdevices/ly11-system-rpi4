@@ -61,7 +61,7 @@ dist-clean:
 dist: dist-prep build
 	[ -d $(ARTIFACT_DIR) ] && \
 		MIX_TARGET=$(MIX_TARGET) fakeroot mix nerves.artifact $(PRJTAG) --path $(DIST) \
-		|| echo 'Skipping previously artifact'
+		|| cp $(ARTIFACT_DIR) $(DIST)/
 
 .PHONY: build-test-app
 build-test-app:
