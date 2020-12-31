@@ -68,7 +68,7 @@ build-test-app:
 	cd ./plt_test_app && MIX_TARGET=$(MIX_TARGET) mix do deps.get, firmware
 
 .PHONY: dist-test-app
-dist-test-app: build-test-app
+dist-test-app: build-test-app dist-prep
 	cp ./plt_test_app/_build/ly11_rpi4_dev/nerves/images/plt_test.fw $(DIST)/plt_test_$(VERSION_TAG).fw
 
 .PHONY: docker
