@@ -63,6 +63,14 @@ dist: dist-prep build
 		MIX_TARGET=$(MIX_TARGET) fakeroot mix nerves.artifact $(PRJTAG) --path $(DIST) \
 		|| echo 'Skipping previously artifact'
 
+.PHONY: build-test-app
+build-test-app:
+	cd ./plt_test_app && MIX_TARGET=$(MIX_TARGET) mix firmware
+
+.PHONY: dist-test-app
+dist-test-app: build-test-app
+	cp ./plt_test_app/_build/ly11_rpi4_dev/nerves/images/plt_test.fw $(DIST)/plt_test_$(VERSION_TAG).fw
+
 .PHONY: docker
 docker: clean
 	docker build --network=host -t "bcdevices/$(PRJTAG)" .

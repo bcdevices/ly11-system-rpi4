@@ -1,0 +1,5 @@
+name: 'build'
+description: 'Build PLT Test'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
