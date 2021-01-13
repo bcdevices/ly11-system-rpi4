@@ -12,6 +12,8 @@
 # Enable 64-bit support
 arm_64bit=1
 
+kernel=u-boot.bin
+
 # We always use the same names, the real used variant is selected by
 # BR2_PACKAGE_RPI_FIRMWARE_{DEFAULT,X,CD} choice
 start_file=start.elf
@@ -59,4 +61,5 @@ hdmi_mode=87
 max_framebuffer_width=1080
 max_framebuffer_height=1920
 display_rotate=1
+
 
