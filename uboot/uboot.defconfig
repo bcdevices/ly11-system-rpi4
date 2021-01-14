@@ -285,7 +285,7 @@ CONFIG_BOOTSTAGE_STASH_SIZE=0x1000
 # CONFIG_SATA_BOOT is not set
 # CONFIG_SD_BOOT is not set
 # CONFIG_SPI_BOOT is not set
-CONFIG_BOOTDELAY=2
+CONFIG_BOOTDELAY=0
 # CONFIG_USE_BOOTARGS is not set
 CONFIG_USE_BOOTCOMMAND=y
 CONFIG_BOOTCOMMAND="run distro_bootcmd"
@@ -521,10 +521,6 @@ CONFIG_CMD_SETEXPR=y
 #
 # Android support commands
 #
-# CONFIG_CMD_NET is not set
-# CONFIG_CMD_ETHSW is not set
-CONFIG_CMD_PXE=y
-# CONFIG_CMD_WOL is not set
 
 #
 # Misc commands
@@ -648,13 +644,7 @@ CONFIG_ENV_VARS_UBOOT_RUNTIME_CONFIG=y
 # CONFIG_ENV_APPEND is not set
 # CONFIG_ENV_WRITEABLE_LIST is not set
 # CONFIG_ENV_ACCESS_IGNORE_FORCE is not set
-CONFIG_NET=y
-# CONFIG_BOOTP_SEND_HOSTNAME is not set
-# CONFIG_NET_RANDOM_ETHADDR is not set
-# CONFIG_NETCONSOLE is not set
-# CONFIG_IP_DEFRAG is not set
-CONFIG_TFTP_BLOCKSIZE=1468
-CONFIG_TFTP_WINDOWSIZE=1
+# CONFIG_NET is not set
 
 #
 # Device Drivers
@@ -759,7 +749,6 @@ CONFIG_DFU_MMC=y
 # Fastboot support
 #
 # CONFIG_USB_FUNCTION_FASTBOOT is not set
-# CONFIG_UDP_FUNCTION_FASTBOOT is not set
 # CONFIG_FIRMWARE is not set
 # CONFIG_ZYNQMP_FIRMWARE is not set
 
@@ -924,77 +913,9 @@ CONFIG_MMC_SDHCI_BCM2835=y
 # CONFIG_MTD_UBI is not set
 # CONFIG_BITBANGMII is not set
 # CONFIG_MV88E6352_SWITCH is not set
-CONFIG_PHYLIB=y
-# CONFIG_PHY_ADDR_ENABLE is not set
-# CONFIG_B53_SWITCH is not set
-# CONFIG_MV88E61XX_SWITCH is not set
-# CONFIG_PHYLIB_10G is not set
-# CONFIG_PHY_AQUANTIA is not set
-# CONFIG_PHY_ATHEROS is not set
-# CONFIG_PHY_BROADCOM is not set
-# CONFIG_PHY_CORTINA is not set
-# CONFIG_PHY_DAVICOM is not set
-# CONFIG_PHY_ET1011C is not set
-# CONFIG_PHY_LXT is not set
-# CONFIG_PHY_MARVELL is not set
-# CONFIG_PHY_MESON_GXL is not set
-# CONFIG_PHY_MICREL is not set
-# CONFIG_PHY_MSCC is not set
-# CONFIG_PHY_NATSEMI is not set
-# CONFIG_PHY_REALTEK is not set
-# CONFIG_PHY_SMSC is not set
-# CONFIG_PHY_TERANETICS is not set
-# CONFIG_PHY_TI is not set
-# CONFIG_PHY_TI_DP83867 is not set
-# CONFIG_PHY_TI_GENERIC is not set
-# CONFIG_PHY_VITESSE is not set
-# CONFIG_PHY_XILINX is not set
-# CONFIG_PHY_XILINX_GMII2RGMII is not set
-# CONFIG_PHY_FIXED is not set
-# CONFIG_PHY_NCSI is not set
 # CONFIG_FSL_PFE is not set
 CONFIG_DM_ETH=y
-# CONFIG_DM_MDIO is not set
 # CONFIG_DM_ETH_PHY is not set
-CONFIG_NETDEVICES=y
-# CONFIG_PHY_GIGE is not set
-# CONFIG_ALTERA_TSE is not set
-# CONFIG_BCM_SF2_ETH is not set
-CONFIG_BCMGENET=y
-# CONFIG_DWC_ETH_QOS is not set
-# CONFIG_E1000 is not set
-# CONFIG_EEPRO100 is not set
-# CONFIG_ETH_DESIGNWARE is not set
-# CONFIG_ETHOC is not set
-# CONFIG_FMAN_ENET is not set
-# CONFIG_FTMAC100 is not set
-# CONFIG_FTGMAC100 is not set
-# CONFIG_MCFFEC is not set
-# CONFIG_FSLDMAFEC is not set
-# CONFIG_KS8851_MLL is not set
-# CONFIG_MACB is not set
-# CONFIG_PCH_GBE is not set
-# CONFIG_RGMII is not set
-# CONFIG_MII is not set
-# CONFIG_PCNET is not set
-# CONFIG_RTL8139 is not set
-# CONFIG_RTL8169 is not set
-# CONFIG_SMC911X is not set
-# CONFIG_SUN7I_GMAC is not set
-# CONFIG_SUN4I_EMAC is not set
-# CONFIG_SUN8I_EMAC is not set
-# CONFIG_SH_ETHER is not set
-# CONFIG_DRIVER_TI_CPSW is not set
-# CONFIG_DRIVER_TI_EMAC is not set
-# CONFIG_DRIVER_TI_KEYSTONE_NET is not set
-# CONFIG_TULIP is not set
-# CONFIG_XILINX_AXIEMAC is not set
-# CONFIG_XILINX_EMACLITE is not set
-# CONFIG_ZYNQ_GEM is not set
-# CONFIG_SYS_DPAA_QBMAN is not set
-# CONFIG_TSEC_ENET is not set
-# CONFIG_MEDIATEK_ETH is not set
-# CONFIG_HIGMACV300_ETH is not set
 # CONFIG_NVME is not set
 CONFIG_PCI=y
 CONFIG_DM_PCI=y
@@ -1247,7 +1168,6 @@ CONFIG_USB_GADGET_DOWNLOAD=y
 # CONFIG_USB_FUNCTION_ROCKUSB is not set
 # CONFIG_USB_FUNCTION_SDP is not set
 # CONFIG_USB_FUNCTION_THOR is not set
-# CONFIG_USB_ETHER is not set
 # CONFIG_USB_HOST_ETHER is not set
 
 #
