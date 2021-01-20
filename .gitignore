@@ -21,4 +21,5 @@ erl_crash.dump
 /archive.log
 /.nerves
 /dist
+/keys
 
