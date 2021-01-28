@@ -113,6 +113,7 @@ defmodule LY11SystemRpi4.MixProject do
       "post-build-symlinks.sh",
       "ramoops.dts",
       "uboot/boot.cmd",
+      "uboot/image.its",
       "users_table.txt",
       "README.md",
       "VERSION"
