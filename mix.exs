@@ -118,6 +118,7 @@ defmodule LY11SystemRpi4.MixProject do
       "nerves_defconfig",
       "post-build.sh",
       "post-createfs.sh",
+      "post-fakeroot.sh",
       "post-build-symlinks.sh",
       "ramoops.dts",
       "users_table.txt",
