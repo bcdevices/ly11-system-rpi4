@@ -123,7 +123,8 @@ defmodule LY11SystemRpi4.MixProject do
       "ramoops.dts",
       "users_table.txt",
       "README.md",
-      "VERSION"
+      "VERSION",
+      "PACKAGES-VERSION"
     ]
   end
 
