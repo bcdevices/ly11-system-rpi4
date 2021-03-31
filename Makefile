@@ -62,7 +62,7 @@ install-nerves-bootstrap:
 	mix archive.install git https://github.com/nerves-project/nerves_bootstrap.git tag v1.10.2 --force
 
 .PHONY: install-prep
-install-prep: install-hex-rebar install-nerves-bootstrap
+install-prep: install-hex-rebar install-nerves-bootstrap sync-packages
 
 .PHONY: build
 build: versions install-prep install-dependencies build-prep
