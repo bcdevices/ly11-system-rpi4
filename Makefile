@@ -74,7 +74,7 @@ build-test-app: install-prep
 
 .PHONY: dist-test-app
 dist-test-app: build-test-app dist-prep
-	cp ./plt_test_app/_build/ly10_rpi3_dev/nerves/images/plt_test.fw $(DIST)/plt_test_$(VERSION_TAG).fw
+	cp ./plt_test_app/_build/ly11_rpi4_dev/nerves/images/plt_test.fw $(DIST)/plt_test_$(VERSION_TAG).fw
 
 dist-prep:
 	-mkdir $(DIST)
