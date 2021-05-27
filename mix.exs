@@ -109,7 +109,7 @@ defmodule LY11SystemRpi4.MixProject do
       "fwup-revert.conf",
       "fwup.conf",
       "LICENSE",
-      "linux-5.4.defconfig",
+      "linux-5.10.defconfig",
       "linux_additional.defconfig",
       "mix.exs",
       "patches",
