@@ -61,7 +61,7 @@ hdmi_group=2
 hdmi_mode=87
 display_rotate=1
 framebuffer_width=480
-framebuffer_height=256
+framebuffer_height=270
 framebuffer_depth=16
 
 [HDMI:1]
