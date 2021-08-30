@@ -50,15 +50,24 @@ defmodule LY11SystemRpi4.MixProject do
       platform_config: [
         defconfig: "nerves_defconfig"
       ],
+      # The :env key is an optional experimental feature for adding environment
+      # variables to the crosscompile environment. These are intended for
+      # llvm-based tooling that may need more precise processor information.
+      env: [
+        {"TARGET_ARCH", "aarch64"},
+        {"TARGET_CPU", "cortex_a72"},
+        {"TARGET_OS", "linux"},
+        {"TARGET_ABI", "gnu"}
+      ],
       checksum: package_files()
     ]
   end
 
   defp deps do
     [
-      {:nerves, "~> 1.5.4 or ~> 1.6.0 or ~> 1.7.1", runtime: false},
-      {:nerves_system_br, "1.14.0", runtime: false},
-      {:nerves_toolchain_aarch64_unknown_linux_gnu, "~> 1.3.0", runtime: false},
+      {:nerves, "~> 1.5.4 or ~> 1.6.0 or ~> 1.7.4", runtime: false},
+      {:nerves_system_br, "1.16.4", runtime: false},
+      {:nerves_toolchain_aarch64_nerves_linux_gnu, "~> 1.4.3", runtime: false},
       {:nerves_system_linter, "~> 0.4", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.22", only: :docs, runtime: false}
     ]
@@ -91,7 +100,6 @@ defmodule LY11SystemRpi4.MixProject do
 
   defp package_files do
     [
-      "package",
       "external.mk",
       "fwup_include",
       "rootfs_overlay",
@@ -110,11 +118,13 @@ defmodule LY11SystemRpi4.MixProject do
       "nerves_defconfig",
       "post-build.sh",
       "post-createfs.sh",
+      "post-fakeroot.sh",
       "post-build-symlinks.sh",
       "ramoops.dts",
       "users_table.txt",
       "README.md",
-      "VERSION"
+      "VERSION",
+      "PACKAGES-VERSION"
     ]
   end
 
@@ -124,9 +134,14 @@ defmodule LY11SystemRpi4.MixProject do
   end
 
   defp build_runner_opts() do
+    # Download source files first to get download errors right away.
+    [make_args: primary_site() ++ ["source", "all"]]
+  end
+
+  defp primary_site() do
     case System.get_env("BR2_PRIMARY_SITE") do
       nil -> []
-      primary_site -> [make_args: ["BR2_PRIMARY_SITE=#{primary_site}"]]
+      primary_site -> ["BR2_PRIMARY_SITE=#{primary_site}"]
     end
   end
 

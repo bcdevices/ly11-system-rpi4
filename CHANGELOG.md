@@ -1,5 +1,110 @@
 # Changelog
 
+## v1.16.2
+
+This release updates Erlang/OTP from 24.0.3 to 24.0.5 and Buildroot from 2021.05
+to 2021.05.1. Both of these are security/bug fix updates. This is expected to be
+a safe upgrade from v1.16.1 for all users.
+
+* Updated dependencies
+  * [nerves_system_br v1.16.4](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.16.1)
+  * [Erlang/OTP 24.0.5](https://erlang.org/download/OTP-24.0.5.README)
+
+* Improvements
+  * Beta support for using a `runtime.exs` script for runtime configuration.
+  * Added a `provision` task to the `fwup.config` to enable re-provisioning a
+    MicroSD card without changing its contents.
+  * Adds a default `/etc/sysctl.conf` that enables use of ICMP in Erlang. This
+    requires `nerves_runtime v0.11.5` or later to automatically load the sysctl
+    variables. With it using `:gen_udp` to send/receive ICMP will "just work".
+    It also makes it easier to add other sysctl variables if needed.
+
+## v1.16.1
+
+This release updates Nerves Toolchains to v1.4.3 and OTP 24.0.3. It should be safe for everyone to apply.
+
+* Updated dependencies
+  * [nerves_system_br v1.16.1](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.16.1)
+  * [Erlang/OTP 24.0.3](https://erlang.org/download/OTP-24.0.3.README)
+  * [nerves toolchains v1.4.3](https://github.com/nerves-project/toolchains/releases/tag/v1.4.3)
+
+## v1.16.0
+
+This release updates to Buildroot 2021.05 and OTP 24.0.2. If you have made a
+custom system off this one, please review the `nerves_system_br v1.16.0` release
+notes.
+
+* Updated dependencies
+  * [nerves_system_br v1.16.0](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.16.0)
+  * [Buildroot 2021.05](http://lists.busybox.net/pipermail/buildroot/2021-June/311946.html)
+  * [Erlang/OTP 24.0.2](https://erlang.org/download/OTP-24.0.2.README)
+
+* Improvements
+  * This release now contains debug symbols and includes the Build-ID in the
+    ELF headers. This makes it easier to get stack traces from C programs. As
+    before, the Nerves tooling strips all symbols from firmware images, so this
+    won't make programs bigger.
+  * Enable compile-time `wpa_supplicant` options to support WPA3, mesh
+    networking, WPS and autoscan.
+
+## v1.15.1
+
+This is a security/bug fix release that updates to Buildroot 2021.02.1 and OTP
+23.3.1. It should be safe for everyone to apply.
+
+* Improvements
+  * Raspberry Pi CM4 support
+  * espeak has been removed from the default install to trim 13 MB off the root
+    filesystem
+
+* Updated dependencies
+  * Linux 5.4.83 - required for CM4 device tree updates
+  * [nerves_system_br v1.15.1](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.15.1)
+  * [Buildroot 2021.02](http://lists.busybox.net/pipermail/buildroot/2021-April/307970.html)
+  * [Erlang/OTP 23.3.1](https://erlang.org/download/OTP-23.3.1.README)
+
+## v1.15.0
+
+This release updates to Buildroot 2021.02 and OTP 23.2.7. If you have made a
+custom system off this one, please review the `nerves_system_br v1.15.0` release
+notes.
+
+The Nerves toolchain has also been updated to v1.4.2. This brings in Linux 4.14
+headers to enable use of cdev and eBPF. This won't affect most users.
+
+* Updated dependencies
+  * [nerves_system_br v1.15.0](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.15.0)
+  * [Buildroot 2021.02](http://lists.busybox.net/pipermail/buildroot/2021-March/305168.html)
+  * [Erlang/OTP 23.2.7](https://erlang.org/download/OTP-23.2.7.README)
+  * [nerves toolchains v1.4.2](https://github.com/nerves-project/toolchains/releases/tag/v1.4.2)
+
+## v1.14.0
+
+This release updates to Buildroot 2020.11.2, GCC 10.2 and OTP 23.2.4.
+
+When migrating custom systems based, please be aware of the following important
+changes:
+
+* There's a new `getrandom` syscall that is made early in BEAM startup. This has
+  the potential to block the BEAM before Nerves can start `rngd` to provide
+  entropy. We have not seen this issue here, but have updated `erlinit.config`
+  for the time being as a precaution.
+* The GCC 10.2.0 toolchain has a different name that calls out "nerves" as the
+  vendor and the naming is now more consistent with other toolchain providers.
+* Experimental support for tooling that requires more information about the
+  target has been added. The initial support focuses on zigler.
+
+* Updated dependencies
+  * [nerves_system_br: bump to v1.14.4](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.14.4)
+  * [Buildroot 2020.11.2](http://lists.busybox.net/pipermail/buildroot/2021-January/302574.html)
+  * [Erlang/OTP 23.2.4](https://erlang.org/download/OTP-23.2.4.README)
+  * [Nerves toolchains 1.4.1](https://github.com/nerves-project/toolchains/releases/tag/v1.4.1)
+
+## v1.13.5
+
+This release adds missing V3D/VC4 drivers and enables the `vc4-fkms-v3d` device
+tree overlay. This fixes issues found when trying out OpenGLES w/ DRM.
+
 ## v1.13.3
 
 This releases enables the OpenGL ES drivers so that it's possible to run UI
