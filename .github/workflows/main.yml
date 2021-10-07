@@ -15,7 +15,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            nerves-buildroot_cache 
+            nerves-buildroot-cache 
           key: buildroot-cache-${{ hashFiles('VERSION', 'mix.lock') }}
           restore-keys: |
             buildroot-cache-
