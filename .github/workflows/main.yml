@@ -30,6 +30,8 @@ jobs:
           echo "/usr/local/elixir/bin" >> $GITHUB_PATH
       - name: Build
         run: |
+          mkdir -p /root/local
+          mkdir -p /root/empty
           make dist
       - name: Clear Artifacts
         run: |
