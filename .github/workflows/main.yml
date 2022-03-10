@@ -23,10 +23,13 @@ jobs:
           restore-keys: |
             buildroot-cache-
             buidroot-dl-
-      - name: Build
+      - name: Setup elixir
         run: |
           wget https://repo.hex.pm/builds/elixir/v$ELIXIR_VERSION.zip 
           unzip -d /usr/local/elixir v$ELIXIR_VERSION.zip
+          echo "/usr/local/elixir" >> $GITHUB_PATH
+      - name: Build
+        run: |
           make dist
       - name: Clear Artifacts
         run: |
