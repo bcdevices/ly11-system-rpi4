@@ -30,7 +30,7 @@ jobs:
           echo "/usr/local/elixir/bin" >> $GITHUB_PATH
       - name: Build
         run: |
-          sudo apt-get install -y u-boot-tools
+          apt-get install -y u-boot-tools
           mkdir -p /root/local
           mkdir -p /root/empty
           make dist
