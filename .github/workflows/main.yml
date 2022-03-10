@@ -6,6 +6,8 @@ jobs:
     name:  Build Nerves system
     runs-on: ubuntu-latest
     container: nervesproject/nerves_system_br:1.18.5
+    env:
+      ELIXIR_VERSION: 1.12.3-otp-24
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -23,7 +25,9 @@ jobs:
             buidroot-dl-
       - name: Build
         run: |
-             make dist
+          make dist
+          wget https://repo.hex.pm/builds/elixir/v$ELIXIR_VERSION.zip 
+          unzip -d /usr/local/elixir v$ELIXIR_VERSION.zip
       - name: Clear Artifacts
         run: |
           rm -rf $HOME/.nerves/dl/ly11_system_rpi4-portable*
