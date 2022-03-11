@@ -18,7 +18,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-            '$HOME/.nerves/dl'
+            $HOME/.nerves/dl
           key: buildroot-cache-${{ hashFiles('VERSION', 'mix.lock') }}
           restore-keys: |
             buildroot-cache-
@@ -47,7 +47,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-west-1'
-          SOURCE_DIR: '$HOME/.nerves/dl'
+          SOURCE_DIR: $HOME/.nerves/dl
       - name: Upload Artifacts
         if: contains(github.ref, 'tags')
         uses: svenstaro/upload-release-action@v2
@@ -65,5 +65,5 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: 'us-west-1'
-          SOURCE_DIR:  'nerves-buildroot-cache'
+          SOURCE_DIR: $HOME/.nerves/dl 
         continue-on-error: true
