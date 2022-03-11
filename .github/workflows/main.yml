@@ -13,10 +13,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           submodules: true
-      - name: act
-        run: |
-          apt-get update
-          apt-get install -y nodejs
       - name: Cache buildroot downloads
         id: cache-downloads
         uses: actions/cache@v2
