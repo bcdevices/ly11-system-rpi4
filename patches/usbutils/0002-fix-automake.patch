@@ -1,5 +1,30 @@
+diff --git a/Makefile.am b/Makefile.am
+index 448c854..2d1b2fc 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -13,7 +13,8 @@ AM_LDFLAGS = \
+ data_DATA =
+ 
+ bin_PROGRAMS = \
+-	lsusb
++	lsusb \
++	usbreset
+ 
+ sbin_SCRIPTS =
+ 
+@@ -21,8 +22,8 @@ bin_SCRIPTS = \
+ 	usb-devices \
+ 	lsusb.py
+ 
+-noinst_PROGRAMS = \
+-	usbreset
++# noinst_PROGRAMS = \
++# 	usbreset
+ 
+ lsusb_SOURCES = \
+ 	lsusb.c lsusb.h \
 diff --git a/Makefile.in b/Makefile.in
-index 04f4ca1..80a8991 100644
+index 04f4ca1..7e290f8 100644
 --- a/Makefile.in
 +++ b/Makefile.in
 @@ -1,7 +1,7 @@
@@ -12,7 +37,26 @@ index 04f4ca1..80a8991 100644
  
  # This Makefile.in is free software; the Free Software Foundation
  # gives unlimited permission to copy and/or distribute it,
-@@ -234,9 +234,6 @@ am__define_uniq_tagged_files = \
+@@ -94,8 +94,7 @@ POST_INSTALL = :
+ NORMAL_UNINSTALL = :
+ PRE_UNINSTALL = :
+ POST_UNINSTALL = :
+-bin_PROGRAMS = lsusb$(EXEEXT)
+-noinst_PROGRAMS = usbreset$(EXEEXT)
++bin_PROGRAMS = lsusb$(EXEEXT) usbreset$(EXEEXT)
+ subdir = .
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ am__aclocal_m4_deps = $(top_srcdir)/configure.ac
+@@ -112,7 +111,7 @@ CONFIG_CLEAN_VPATH_FILES =
+ am__installdirs = "$(DESTDIR)$(bindir)" "$(DESTDIR)$(bindir)" \
+ 	"$(DESTDIR)$(sbindir)" "$(DESTDIR)$(man1dir)" \
+ 	"$(DESTDIR)$(man8dir)" "$(DESTDIR)$(datadir)"
+-PROGRAMS = $(bin_PROGRAMS) $(noinst_PROGRAMS)
++PROGRAMS = $(bin_PROGRAMS)
+ am_lsusb_OBJECTS = lsusb-lsusb.$(OBJEXT) lsusb-lsusb-t.$(OBJEXT) \
+ 	lsusb-desc-defs.$(OBJEXT) lsusb-desc-dump.$(OBJEXT) \
+ 	lsusb-names.$(OBJEXT) lsusb-sysfs.$(OBJEXT) \
+@@ -234,9 +233,6 @@ am__define_uniq_tagged_files = \
    unique=`for i in $$list; do \
      if test -f "$$i"; then echo $$i; else echo $(srcdir)/$$i; fi; \
    done | $(am__uniquify_input)`
@@ -22,7 +66,7 @@ index 04f4ca1..80a8991 100644
  DIST_SUBDIRS = $(SUBDIRS)
  am__DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/config.h.in NEWS \
  	compile depcomp install-sh missing
-@@ -295,12 +292,15 @@ CC = @CC@
+@@ -295,12 +291,15 @@ CC = @CC@
  CCDEPMODE = @CCDEPMODE@
  CFLAGS = @CFLAGS@
  CPPFLAGS = @CPPFLAGS@
@@ -38,13 +82,88 @@ index 04f4ca1..80a8991 100644
  EXEEXT = @EXEEXT@
  INSTALL = @INSTALL@
  INSTALL_DATA = @INSTALL_DATA@
-@@ -953,7 +953,6 @@ cscopelist-am: $(am__tagged_files)
+@@ -389,6 +388,9 @@ bin_SCRIPTS = \
+ 	usb-devices \
+ 	lsusb.py
+ 
++
++# noinst_PROGRAMS = \
++# 	usbreset
+ lsusb_SOURCES = \
+ 	lsusb.c lsusb.h \
+ 	lsusb-t.c \
+@@ -527,9 +529,6 @@ uninstall-binPROGRAMS:
+ clean-binPROGRAMS:
+ 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
+ 
+-clean-noinstPROGRAMS:
+-	-test -z "$(noinst_PROGRAMS)" || rm -f $(noinst_PROGRAMS)
+-
+ lsusb$(EXEEXT): $(lsusb_OBJECTS) $(lsusb_DEPENDENCIES) $(EXTRA_lsusb_DEPENDENCIES) 
+ 	@rm -f lsusb$(EXEEXT)
+ 	$(AM_V_CCLD)$(LINK) $(lsusb_OBJECTS) $(lsusb_LDADD) $(LIBS)
+@@ -953,7 +952,6 @@ cscopelist-am: $(am__tagged_files)
  distclean-tags:
  	-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags
  	-rm -f cscope.out cscope.in.out cscope.po.out cscope.files
 -
  distdir: $(BUILT_SOURCES)
  	$(MAKE) $(AM_MAKEFLAGS) distdir-am
+ 
+@@ -1197,8 +1195,7 @@ maintainer-clean-generic:
+ 	@echo "it deletes files that may require special tools to rebuild."
+ clean: clean-recursive
+ 
+-clean-am: clean-binPROGRAMS clean-generic clean-noinstPROGRAMS \
+-	mostlyclean-am
++clean-am: clean-binPROGRAMS clean-generic mostlyclean-am
+ 
+ distclean: distclean-recursive
+ 	-rm -f $(am__CONFIG_DISTCLEAN_FILES)
+@@ -1290,25 +1287,25 @@ uninstall-man: uninstall-man1 uninstall-man8
+ 
+ .PHONY: $(am__recursive_targets) CTAGS GTAGS TAGS all all-am \
+ 	am--depfiles am--refresh check check-am clean \
+-	clean-binPROGRAMS clean-cscope clean-generic \
+-	clean-noinstPROGRAMS cscope cscopelist-am ctags ctags-am dist \
+-	dist-all dist-bzip2 dist-gzip dist-lzip dist-shar dist-tarZ \
+-	dist-xz dist-zip dist-zstd distcheck distclean \
+-	distclean-compile distclean-generic distclean-hdr \
+-	distclean-local distclean-tags distcleancheck distdir \
+-	distuninstallcheck dvi dvi-am html html-am info info-am \
+-	install install-am install-binPROGRAMS install-binSCRIPTS \
+-	install-data install-data-am install-dataDATA install-dvi \
+-	install-dvi-am install-exec install-exec-am install-html \
+-	install-html-am install-info install-info-am install-man \
+-	install-man1 install-man8 install-pdf install-pdf-am \
+-	install-ps install-ps-am install-sbinSCRIPTS install-strip \
+-	installcheck installcheck-am installdirs installdirs-am \
+-	maintainer-clean maintainer-clean-generic mostlyclean \
+-	mostlyclean-compile mostlyclean-generic pdf pdf-am ps ps-am \
+-	tags tags-am uninstall uninstall-am uninstall-binPROGRAMS \
+-	uninstall-binSCRIPTS uninstall-dataDATA uninstall-man \
+-	uninstall-man1 uninstall-man8 uninstall-sbinSCRIPTS
++	clean-binPROGRAMS clean-cscope clean-generic cscope \
++	cscopelist-am ctags ctags-am dist dist-all dist-bzip2 \
++	dist-gzip dist-lzip dist-shar dist-tarZ dist-xz dist-zip \
++	dist-zstd distcheck distclean distclean-compile \
++	distclean-generic distclean-hdr distclean-local distclean-tags \
++	distcleancheck distdir distuninstallcheck dvi dvi-am html \
++	html-am info info-am install install-am install-binPROGRAMS \
++	install-binSCRIPTS install-data install-data-am \
++	install-dataDATA install-dvi install-dvi-am install-exec \
++	install-exec-am install-html install-html-am install-info \
++	install-info-am install-man install-man1 install-man8 \
++	install-pdf install-pdf-am install-ps install-ps-am \
++	install-sbinSCRIPTS install-strip installcheck installcheck-am \
++	installdirs installdirs-am maintainer-clean \
++	maintainer-clean-generic mostlyclean mostlyclean-compile \
++	mostlyclean-generic pdf pdf-am ps ps-am tags tags-am uninstall \
++	uninstall-am uninstall-binPROGRAMS uninstall-binSCRIPTS \
++	uninstall-dataDATA uninstall-man uninstall-man1 uninstall-man8 \
++	uninstall-sbinSCRIPTS
+ 
+ .PRECIOUS: Makefile
  
 diff --git a/aclocal.m4 b/aclocal.m4
 index d7e23bd..5b12ff7 100644
