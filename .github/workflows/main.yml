@@ -9,8 +9,6 @@ jobs:
     env:
       ELIXIR_VERSION: 1.14.2-otp-25 
     steps:
-      - name: Simulate failure
-        run: exit 1
       - name: Checkout code
         uses: actions/checkout@v2
         with:
