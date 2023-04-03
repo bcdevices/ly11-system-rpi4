@@ -14,7 +14,8 @@ RUN apt-get update && \
   apt install -y \
   subversion \
   u-boot-tools \
-  ca-certificates
+  ca-certificates \
+  autoconf-archive
 
 #Install Elixir
 RUN wget https://repo.hex.pm/builds/elixir/v$ELIXIR_VERSION.zip && \
