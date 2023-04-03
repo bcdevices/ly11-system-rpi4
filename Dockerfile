@@ -16,7 +16,7 @@ RUN apt-get update && \
   u-boot-tools \
   ca-certificates \
   autoconf-archive \
-  gettext-base \
+  gettext \
   mercurial
 
 #Install Elixir

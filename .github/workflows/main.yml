@@ -31,9 +31,10 @@ jobs:
         run: |
           git config --global url."https://github.com/".insteadOf git://github.com/
       - name: Download buildroot sources
+        timeout-minutes: 60
         run: |
           apt-get update
-          apt-get install -y  mercurial u-boot-tools autoconf-archive gettext-base
+          apt-get install -y  mercurial u-boot-tools autoconf-archive gettext
           make download-sources
       - name: Cache buildroot downloads
         uses: actions/cache/save@v3
