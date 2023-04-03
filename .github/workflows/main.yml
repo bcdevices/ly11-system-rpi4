@@ -19,6 +19,8 @@ jobs:
         with:
           path: ~/.nerves/dl
           key: buildroot-cache-${{ hashFiles('VERSION', 'mix.lock') }}
+          restore-keys: |
+            buildroot-cache
       - name: Setup elixir
         run: |
           wget https://repo.hex.pm/builds/elixir/v$ELIXIR_VERSION.zip
