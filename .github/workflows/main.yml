@@ -24,11 +24,6 @@ jobs:
           restore-keys: |
             buildroot-cache-
             buidroot-dl-
-      - name: Setup elixir
-        run: |
-          wget https://repo.hex.pm/builds/elixir/v$ELIXIR_VERSION.zip
-          unzip -d /usr/local/elixir v$ELIXIR_VERSION.zip
-          echo "/usr/local/elixir/bin" >> $GITHUB_PATH
       - name: Clear Existing Artifacts
         run: |
           rm -rf $HOME/.nerves/dl/ly11_system_rpi4-portable*
