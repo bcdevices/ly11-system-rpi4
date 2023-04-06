@@ -5,12 +5,14 @@ jobs:
   build:
     name: Build Nerves system
     runs-on: ubuntu-latest
-    container: ghcr.io/nerves-project/nerves_system_br:1.22.5
+    container: nervesproject/nerves_system_br:1.22.3
     env:
-      ELIXIR_VERSION: 1.14.4-otp-25
+      ELIXIR_VERSION: 1.14.2-otp-25 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
+        with:
+          submodules: true
       - name: Restore buildroot downloads
         uses: actions/cache/restore@v3
         id: cache
