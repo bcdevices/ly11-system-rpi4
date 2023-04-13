@@ -23,7 +23,6 @@ jobs:
           key: buildroot-cache-${{ hashFiles('VERSION', 'mix.lock') }}
           restore-keys: |
             buildroot-cache-
-            buidroot-dl-
       - name: Clear Existing Artifacts
         run: |
           rm -rf $HOME/.nerves/dl/ly11_system_rpi4-portable*
