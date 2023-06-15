@@ -1,4 +1,4 @@
-FROM ghcr.io/nerves-project/nerves_system_br:1.23.0
+FROM nervesproject/nerves_system_br:1.22.3
 LABEL "com.github.actions.name"="Build System"
 LABEL "com.github.actions.description"="Build Nerves System"
 LABEL "com.github.actions.icon"="package"
@@ -8,7 +8,7 @@ LABEL "repository"="https://github.com/bcdevices/ly11-system-rpi4"
 LABEL "homepage"="https://github.com/bcdevices/ly11-system-rpi4"
 LABEL "maintainer"="Blue Clover Devices"
 
-ENV ELIXIR_VERSION=1.14.5-otp-26
+ENV ELIXIR_VERSION=1.14.2-otp-25
 
 RUN apt-get update && \
   apt install -y \
