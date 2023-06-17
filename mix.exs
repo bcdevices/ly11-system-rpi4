@@ -68,7 +68,7 @@ defmodule LY11SystemRpi4.MixProject do
   defp deps do
     [
       {:nerves, "~> 1.5.4 or ~> 1.6.0 or ~> 1.7.15 or ~> 1.8", runtime: false},
-      {:nerves_system_br, "1.22.5", runtime: false},
+      {:nerves_system_br, "1.23.0", runtime: false},
       {:nerves_toolchain_aarch64_nerves_linux_gnu, "~> 1.8.0", runtime: false},
       {:nerves_system_linter, "~> 0.4", only: [:dev, :test], runtime: false},
       {:ex_doc, "~> 0.22", only: :docs, runtime: false}
@@ -113,7 +113,7 @@ defmodule LY11SystemRpi4.MixProject do
       "fwup.conf",
       "LICENSE",
       "linux_additional.defconfig",
-      "linux-5.15.defconfig",
+      "linux-6.1.defconfig",
       "mix.exs",
       "patches",
       "busybox_defconfig",
