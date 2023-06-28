@@ -17,7 +17,11 @@ VERSION_NUM = `cat $(VERSION_FILE)`
 
 PACKAGE_VERSION_NUM = $(shell cat PACKAGES-VERSION)
 
+NERVES_BOOTSTRAP_VERSION="1.11.4"
 NERVES_BR_DL_DIR ?= $(HOME)/.nerves/dl
+# Set to 1 to disable progress bar output when fetching artifacts (typically for CI)
+NERVES_LOG_DISABLE_PROGRESS_BAR ?= 1
+export NERVES_LOG_DISABLE_PROGRESS_BAR
 
 ARTIFACT_DIR := $(BASE_PATH)/.nerves/artifacts/$(PRJTAG)-portable-$(VERSION_NUM)
 
@@ -65,7 +69,7 @@ install-dependencies:
 	MIX_TARGET=$(MIX_TARGET) mix deps.get
 
 install-nerves-bootstrap:
-	mix archive.install git https://github.com/nerves-project/nerves_bootstrap.git tag v1.11.2 --force
+	mix archive.install git https://github.com/nerves-project/nerves_bootstrap.git tag v${NERVES_BOOTSTRAP_VERSION} --force
 
 .PHONY: install-prep
 install-prep: install-hex-rebar install-nerves-bootstrap sync-packages
