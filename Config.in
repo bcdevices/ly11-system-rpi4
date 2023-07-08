@@ -24,3 +24,5 @@ source "$NERVES_DEFCONFIG_DIR/package/python-natsort/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/python-prettytable/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/python-pylink-square/Config.in"
 source "$NERVES_DEFCONFIG_DIR/package/python-pyocd/Config.in"
+source "$NERVES_DEFCONFIG_DIR/package/python-wheel/Config.in"
+
