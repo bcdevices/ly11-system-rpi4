@@ -10,6 +10,9 @@ jobs:
       ELIXIR_VERSION: 1.14.4-otp-25
       GITHUB_TOKEN: ${{ secrets.BUILDBOT_GITHUB_TOKEN }}
     steps:
+      - name: Configure git overrides
+        run:
+          git config --global url."https://$GITHUB_TOKEN@github.com/bcdevices/nerves_system_br.git".insteadOf "git@github.com:bcdevices/nerves_system_br.git"
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Restore buildroot downloads
