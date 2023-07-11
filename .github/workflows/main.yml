@@ -8,6 +8,7 @@ jobs:
     container: ghcr.io/nerves-project/nerves_system_br:1.22.5
     env:
       ELIXIR_VERSION: 1.14.4-otp-25
+      GITHUB_TOKEN: ${{ secrets.BUILDBOT_GITHUB_TOKEN }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
