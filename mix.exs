@@ -127,7 +127,8 @@ defmodule LY11SystemRpi4.MixProject do
       "users_table.txt",
       "README.md",
       "VERSION",
-      "PACKAGES-VERSION"
+      "PACKAGES-VERSION",
+      "boot.cmd"
     ]
   end
 
