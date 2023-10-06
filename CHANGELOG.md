@@ -12,6 +12,39 @@ follows:
    releases, and Linux kernel updates. They're also made to fix bugs and add
    features to the build infrastructure.
 
+## v1.24.0
+
+This is a Buildroot version update that appears to mostly contain bug and
+security fixes. It should be a low risk upgrade from v1.23.2.
+
+* New features
+  * Support factory reset, preventing firmware reverts. See [Nerves.Runtime.FwupOps](https://hexdocs.pm/nerves_runtime/Nerves.Runtime.FwupOps.html)
+
+* Updated dependencies
+  * [nerves_system_br v1.24.0](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.24.0)
+  * [Buildroot 2023.05.2](https://lore.kernel.org/buildroot/87ledrkrpp.fsf@48ers.dk/T/), [2023.05.1](https://lore.kernel.org/buildroot/87351m8qm4.fsf@48ers.dk/T/), [2023.05](https://lore.kernel.org/buildroot/87r0qn2c77.fsf@48ers.dk/T/)
+  * [Erlang/OTP 26.1](https://erlang.org/download/OTP-26.1.README)
+
+## v1.23.2
+
+* Fixes
+  * This fixes a rare aarch64 Erlang JIT bug that affects NervesKey users. See
+    `nerves_system_br` notes.
+
+* Updated dependencies
+  * [nerves_system_br v1.23.3](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.23.3)
+
+## v1.23.1
+
+This is a bug and security fix update. It should be a low risk upgrade.
+
+* Fixes
+  * Fix CTRL+R over ssh
+
+* Updated dependencies
+  * [nerves_system_br v1.23.2](https://github.com/nerves-project/nerves_system_br/releases/tag/v1.23.2)
+  * [Buildroot 2023.02.2](https://lore.kernel.org/buildroot/87y1je6wva.fsf@48ers.dk/T/)
+
 ## v1.23.0
 
 This is a major update that brings in Erlang/OTP 26, Buildroot 2023.02.2, Linux
