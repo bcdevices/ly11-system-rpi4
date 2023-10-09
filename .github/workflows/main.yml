@@ -5,9 +5,9 @@ jobs:
   build:
     name: Build Nerves system
     runs-on: ubuntu-150GB
-    container: ghcr.io/nerves-project/nerves_system_br:1.22.5
+    container: ghcr.io/nerves-project/nerves_system_br:1.24.1
     env:
-      ELIXIR_VERSION: 1.14.4-otp-25
+      ELIXIR_VERSION: 1.15.6-otp-26
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

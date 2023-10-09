@@ -1,4 +1,4 @@
-ARG NERVES_SYSTEM_BR_VERSION="1.22.5"
+ARG NERVES_SYSTEM_BR_VERSION="1.24.1"
 FROM ghcr.io/nerves-project/nerves_system_br:${NERVES_SYSTEM_BR_VERSION}
 LABEL "com.github.actions.name"="Build System"
 LABEL "com.github.actions.description"="Build Nerves System"
