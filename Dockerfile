@@ -9,7 +9,7 @@ LABEL "repository"="https://github.com/bcdevices/ly11-system-rpi4"
 LABEL "homepage"="https://github.com/bcdevices/ly11-system-rpi4"
 LABEL "maintainer"="Blue Clover Devices"
 
-ARG ELIXIR_VERSION="1.14.4-otp-25"
+ARG ELIXIR_VERSION="1.15.6-otp-26"
 
 RUN apt-get update && \
   apt install -y \
