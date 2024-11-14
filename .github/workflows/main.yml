@@ -12,7 +12,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Restore buildroot downloads
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         id: cache
         with:
           path: ~/.nerves/dl
@@ -37,7 +37,7 @@ jobs:
           apt-get install -y  mercurial u-boot-tools autoconf-archive gettext
           make download-sources
       - name: Cache buildroot downloads
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         with:
           path: ~/.nerves/dl
           key: buildroot-cache-${{ hashFiles('VERSION', 'mix.lock') }}
