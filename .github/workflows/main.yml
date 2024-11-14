@@ -10,7 +10,7 @@ jobs:
       ELIXIR_VERSION: 1.15.6-otp-26
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Restore buildroot downloads
         uses: actions/cache/restore@v3
         id: cache
